@@ -17,7 +17,6 @@ public class App
     	} catch (Exception e) {
     		System.out.println("Application erreur \n" + e);
     	}
-    	
-    	// okey
+
     }
 }
