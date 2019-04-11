@@ -17,22 +17,5 @@ public class App
     	} catch (Exception e) {
     		System.out.println("Application erreur \n" + e);
     	}
-    	/*
-    	VilleFranceDAO villeFranceDAO = new VilleFranceDAO();
-
-		VilleFrance villeFrance = new VilleFrance();
-		villeFrance.setCodeCommuneINSEE(null);
-		villeFrance.setNomCommune(null);
-		villeFrance.setCodePostal(null);
-		villeFrance.setLibelleAcheminement(null);
-		villeFrance.setLigne5(null);
-		villeFrance.setLatitude(null);
-		villeFrance.setLongitude(null);
-		
-		List<VilleFrance> villesFrance = villeFranceDAO.trouver(villeFrance);
-    	for(int i = 0; i < villesFrance.size(); i++) {
-    		System.out.println(villesFrance.get(i));
-    	}
-    	*/
     }
 }
