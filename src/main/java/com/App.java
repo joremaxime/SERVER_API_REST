@@ -18,7 +18,5 @@ public class App
     		System.out.println("Application erreur \n" + e);
     	}
 
-    	
-    	// Bonjour
     }
 }
