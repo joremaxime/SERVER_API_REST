@@ -9,6 +9,7 @@ public class VilleFrance {
 	private String ligne5;
 	private String latitude;
 	private String longitude;
+	private boolean isActive;
 	
 	public VilleFrance() {
 		super();
@@ -70,9 +71,19 @@ public class VilleFrance {
 		this.longitude = longitude;
 	}
 	
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
 	@Override
 	public String toString() {
-		return "VilleFrance [codeCommuneINSEE=" + this.codeCommuneINSEE + ", nomCommune=" + this.nomCommune + ", codePostal=" + this.codePostal + ", libelleAcheminement=" + this.libelleAcheminement + ", ligne5=" + this.ligne5 + ", latitude=" + this.latitude + ", longitude=" + this.longitude + "]";
+		return "VilleFrance [codeCommuneINSEE=" + codeCommuneINSEE + ", nomCommune=" + nomCommune + ", codePostal="
+				+ codePostal + ", libelleAcheminement=" + libelleAcheminement + ", ligne5=" + ligne5 + ", latitude="
+				+ latitude + ", longitude=" + longitude + ", isActive=" + isActive + "]";
 	}
 	
 }

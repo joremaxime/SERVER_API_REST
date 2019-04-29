@@ -30,13 +30,13 @@ public class FonctionnalitesController {
 		VilleFranceDAO villeFranceDAO = new VilleFranceDAO();
 
 		VilleFrance villeFrance = new VilleFrance();
-		villeFrance.setCodeCommuneINSEE(codeCommuneINSEE);
-		villeFrance.setNomCommune(nomCommune);
-		villeFrance.setCodePostal(codePostal);
-		villeFrance.setLibelleAcheminement(libelleAcheminement);
-		villeFrance.setLigne5(ligne5);
-		villeFrance.setLatitude(latitude);
-		villeFrance.setLongitude(longitude);
+		villeFrance.setCodeCommuneINSEE(getSpace(codeCommuneINSEE));
+		villeFrance.setNomCommune(getSpace(nomCommune));
+		villeFrance.setCodePostal(getSpace(codePostal));
+		villeFrance.setLibelleAcheminement(getSpace(libelleAcheminement));
+		villeFrance.setLigne5(getSpace(ligne5));
+		villeFrance.setLatitude(getSpace(latitude));
+		villeFrance.setLongitude(getSpace(longitude));
 		
 		villesFrance = villeFranceDAO.trouver(villeFrance);
 		
@@ -52,7 +52,7 @@ public class FonctionnalitesController {
 		VilleFranceDAO villeFranceDAO = new VilleFranceDAO();
 
 		villesFrance = villeFranceDAO.trouverEntre((int) Integer.parseInt(offset));
-		
+				
 		return villesFrance;
 	}
 	
@@ -69,13 +69,13 @@ public class FonctionnalitesController {
 		VilleFrance villeFrance = new VilleFrance();
 		VilleFranceDAO villeFranceDAO = new VilleFranceDAO();
 		
-		villeFrance.setCodeCommuneINSEE(codeCommuneINSEE);
-		villeFrance.setNomCommune(nomCommune);
-		villeFrance.setCodePostal(codePostal);
-		villeFrance.setLibelleAcheminement(libelleAcheminement);
-		villeFrance.setLigne5(ligne5);
-		villeFrance.setLatitude(latitude);
-		villeFrance.setLongitude(longitude);
+		villeFrance.setCodeCommuneINSEE(getSpace(codeCommuneINSEE));
+		villeFrance.setNomCommune(getSpace(nomCommune));
+		villeFrance.setCodePostal(getSpace(codePostal));
+		villeFrance.setLibelleAcheminement(getSpace(libelleAcheminement));
+		villeFrance.setLigne5(getSpace(ligne5));
+		villeFrance.setLatitude(getSpace(latitude));
+		villeFrance.setLongitude(getSpace(longitude));
 		
 		villeFranceDAO.ajouter(villeFrance);
 		
@@ -94,13 +94,13 @@ public class FonctionnalitesController {
 		VilleFranceDAO villeFranceDAO = new VilleFranceDAO();
 
 		VilleFrance villeFrance = new VilleFrance();
-		villeFrance.setCodeCommuneINSEE(codeCommuneINSEE);
-		villeFrance.setNomCommune(nomCommune);
-		villeFrance.setCodePostal(codePostal);
-		villeFrance.setLibelleAcheminement(libelleAcheminement);
-		villeFrance.setLigne5(ligne5);
-		villeFrance.setLatitude(latitude);
-		villeFrance.setLongitude(longitude);
+		villeFrance.setCodeCommuneINSEE(getSpace(codeCommuneINSEE));
+		villeFrance.setNomCommune(getSpace(nomCommune));
+		villeFrance.setCodePostal(getSpace(codePostal));
+		villeFrance.setLibelleAcheminement(getSpace(libelleAcheminement));
+		villeFrance.setLigne5(getSpace(ligne5));
+		villeFrance.setLatitude(getSpace(latitude));
+		villeFrance.setLongitude(getSpace(longitude));
 		
 		villeFranceDAO.modifier(villeFrance);
 		
@@ -112,6 +112,14 @@ public class FonctionnalitesController {
 		VilleFranceDAO villeFranceDAO = new VilleFranceDAO();
 		
 		villeFranceDAO.supprimer(codeCommuneINSEE);
+	}
+	
+
+	private String getSpace(String str) {
+		if (str == null) {
+			return str;
+		}
+		return str.replaceAll("%20", " ");
 	}
 	
 }

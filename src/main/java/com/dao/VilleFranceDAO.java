@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.config.DAOConnection;
@@ -36,7 +35,8 @@ public class VilleFranceDAO {
 			(libelleAcheminement == null ? "AND Libelle_acheminement IS NOT NULL " : "AND Libelle_acheminement = ? ") +
 			(ligne5 == null ? "AND Ligne_5 IS NOT NULL " : "AND Ligne_5 = ? ") +
 			(latitude == null ? "AND Latitude IS NOT NULL " : "AND Latitude = ? ") +
-			(longitude == null ? "AND Longitude IS NOT NULL " : "AND Longitude = ?");
+			(longitude == null ? "AND Longitude IS NOT NULL " : "AND Longitude = ? ") +
+			"AND isActive = 1";
 						
 			preparedStatement = connection.prepareStatement(query);
 			int index = 0;
@@ -94,10 +94,10 @@ public class VilleFranceDAO {
 		
 		try {
 			connection = this.creerConnexion();
-			String query = "SELECT * FROM ville_france ORDER BY Code_commune_INSEE ASC LIMIT 50 OFFSET ?";
+			String query = "SELECT * FROM ville_france WHERE isActive = 1 ORDER BY Code_commune_INSEE ASC LIMIT 20 OFFSET ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, offset);
-			
+						
 			resultSet = preparedStatement.executeQuery();
 			
 			while (resultSet.next()) {
@@ -128,7 +128,7 @@ public class VilleFranceDAO {
 		
 		try {
 			connection = this.creerConnexion();
-			String query = "INSERT INTO ville_france VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO ville_france VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, codeCommuneINSEE);
 			preparedStatement.setString(2, nomCommune);
@@ -182,7 +182,7 @@ public class VilleFranceDAO {
 		
 		try {
 			connection = this.creerConnexion();
-			String query = "DELETE FROM ville_france WHERE Code_commune_INSEE = ?";
+			String query = "UPDATE ville_france SET isActive = 0 WHERE Code_commune_INSEE = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, codeCommuneINSEE);
 
